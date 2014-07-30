@@ -2,6 +2,7 @@ package tictactoe
 
 type GameBoard struct {
   Board []string
+  Turn string
 }
 
 func CreateBoard(size int) []string {
@@ -13,10 +14,12 @@ func CreateBoard(size int) []string {
   return board
 }
 
-func SwitchTurn(turn *string) {
-  if *turn == "X" {
-    *turn = "O" } else {
-    *turn = "X" }
+func (g *GameBoard) SwitchTurn() {
+  if g.Turn == "X" {
+    g.Turn = "O"
+  } else {
+    g.Turn = "X" 
+  }
 }
 
 func (g GameBoard) RemainingIndices() (remaining_indices []int) {

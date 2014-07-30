@@ -7,7 +7,7 @@ import (
 )
 
 func horizontal_bars(dimension int) {
-  fmt.Println("---" + strings.Repeat("-", (dimension * 2)) + "--")
+  fmt.Println("--" + strings.Repeat("-", (dimension * 2)) + "-")
 }
 
 func DisplayBoard(board []string) {
@@ -15,7 +15,7 @@ func DisplayBoard(board []string) {
   horizontal_bars(dimension)
   for i := 0; i < len(board); {
     row_end := i + dimension
-    fmt.Println("| ", strings.Join(board[i:row_end], " "), " |")
+    fmt.Println("|", strings.Join(board[i:row_end], " "), "|")
     i += dimension
   }
   horizontal_bars(dimension)
