@@ -14,13 +14,13 @@ func slice_rows(board []string) [][]string {
 }
 
 func transpose(sliced_board [][]string) [][]string{
-  var temp_row []string
+  var temp_slice []string
   for row_ind, row := range sliced_board {
     for val_ind := range row {
-      temp_row = append(temp_row, sliced_board[val_ind][row_ind])
+      temp_slice = append(temp_slice, sliced_board[val_ind][row_ind])
     }
   }
-  return slice_rows(temp_row)
+  return slice_rows(temp_slice)
 }
 
 func HorizontalWin(board []string, turn string) bool {
