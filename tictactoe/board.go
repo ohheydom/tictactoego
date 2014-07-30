@@ -1,5 +1,10 @@
 package tictactoe
 
-func CreateBoard() []string {
-  return []string { "-", "-", "-", "-", "-", "-", "-", "-", "-" }
+func CreateBoard(size int) []string {
+  dim := size * size
+  var board []string
+  for i := 0; i < dim; i++ {
+    board = append(board, "-")
+  }
+  return board
 }
