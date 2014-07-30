@@ -1,10 +1,16 @@
 package main
 
 import (
-  "./tictactoe/"
+  . "./tictactoe/"
 )
 
 func main() {
-  board := tictactoe.CreateBoard(4)
-  tictactoe.DisplayBoard(board)
+  game := GameBoard{ CreateBoard(3) }
+  turn := "X"
+  DisplayBoard(game.Board)
+  game.Move(4, turn)
+  DisplayBoard(game.Board)
+  SwitchTurn(&turn)
+  game.Move(5, turn)
+  DisplayBoard(game.Board)
 }
