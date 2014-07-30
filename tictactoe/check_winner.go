@@ -57,12 +57,12 @@ func DiagonalWin(board []string, turn string) bool {
   sliced_board := transpose_diagonal(slice_rows(board))
   are_equal := false
   for _, val := range sliced_board {
-    test := 0
+    count := 0
     for _, value := range val {
       if value == turn { 
-        test += 1
+        count += 1
       }
-      if test == len(val) {
+      if count == len(val) {
         are_equal = true
         break
       }
@@ -75,12 +75,12 @@ func HorizontalWin(board []string, turn string) bool {
   sliced_board := slice_rows(board)
   are_equal := false
   for _, val := range sliced_board {
-    test := 0
+    count := 0
     for _, value := range val {
       if value == turn { 
-        test += 1
+        count += 1
       }
-      if test == len(val) {
+      if count == len(val) {
         are_equal = true
         break
       }
@@ -93,12 +93,12 @@ func VerticalWin(board []string, turn string) bool {
   sliced_board := transpose(slice_rows(board))
   are_equal := false
   for _, val := range sliced_board {
-    test := 0
+    count := 0
     for _, value := range val {
       if value == turn { 
-        test += 1
+        count += 1
       }
-      if test == len(val) {
+      if count == len(val) {
         are_equal = true
         break
       }
