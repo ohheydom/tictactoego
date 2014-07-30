@@ -8,7 +8,16 @@ func TestTranspose(t *testing.T) {
   transposed_board := [][]string{ []string{"X", "-", "-"}, []string{"X", "O", "X"}, []string{"-", "O", "O"} }
   tran := transpose(initial_board)
   if !reflect.DeepEqual(tran, transposed_board) {
-    t.Error("Expected", transposed_board, "got", transposed_board)
+    t.Error("Expected", transposed_board, "got", tran)
+  } 
+}
+
+func TestTransposeDiagonal(t *testing.T) {
+  initial_board := [][]string{ []string{"X", "X", "-"}, []string{"-", "O", "O"}, []string{"-", "X", "O"} }
+  transposed_board := [][]string{ []string{"X", "O", "O"}, []string{"-", "O", "-"} }
+  tran := transpose_diagonal(initial_board)
+  if !reflect.DeepEqual(tran, transposed_board) {
+    t.Error("Expected", transposed_board, "got", tran)
   } 
 }
 
@@ -51,5 +60,12 @@ func TestVerticalWin(t *testing.T) {
     if VerticalWin(result, "O") == false {
       t.Error("Expected true")
     }
+  }
+}
+
+func TestDiagonalWin(t *testing.T) {
+  win_x := []string{ "X", "O", "O", "-", "X", "-", "O", "X", "X" }
+  if DiagonalWin(win_x, "X") == false {
+    t.Error("Expected True")
   }
 }
