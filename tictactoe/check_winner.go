@@ -60,7 +60,7 @@ func DiagonalWin(board []string, turn string) bool {
     test := 0
     for _, value := range val {
       if value == turn { 
-        test +=1
+        test += 1
       }
       if test == len(val) {
         are_equal = true
@@ -78,7 +78,7 @@ func HorizontalWin(board []string, turn string) bool {
     test := 0
     for _, value := range val {
       if value == turn { 
-        test +=1
+        test += 1
       }
       if test == len(val) {
         are_equal = true
@@ -96,7 +96,7 @@ func VerticalWin(board []string, turn string) bool {
     test := 0
     for _, value := range val {
       if value == turn { 
-        test +=1
+        test += 1
       }
       if test == len(val) {
         are_equal = true
