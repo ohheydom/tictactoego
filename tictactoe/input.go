@@ -25,7 +25,7 @@ func GridSizeMessage()(dim int) {
   return
 }
 
-func LoopThroughMoves(g GameBoard) {
+func LoopThroughMoves(g *GameBoard) {
   for g.Win() == false {
     var move int
     DisplayAskForMove()
@@ -36,8 +36,9 @@ func LoopThroughMoves(g GameBoard) {
       g.Move(move, g.Turn)
       g.SwitchTurn()
     } 
-  DisplayBoard(g.Board)
-  DisplayRemainingMoves(g)
+    DisplayBoard(g.Board)
+    DisplayRemainingMoves(g)
+    DisplayTurn(g)
     if len(g.RemainingIndices()) == 0 {
       break
     }

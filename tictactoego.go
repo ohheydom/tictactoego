@@ -5,9 +5,5 @@ import (
 )
 
 func main() {
-  dim := GridSizeMessage()
-  game := GameBoard{CreateBoard(dim), "X"}
-  DisplayBoard(game.Board)
-  DisplayTurn(game)
-  LoopThroughMoves(game)
+  Play()
 }
