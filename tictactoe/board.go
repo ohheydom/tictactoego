@@ -22,6 +22,14 @@ func (g *GameBoard) SwitchTurn() {
   }
 }
 
+func (g GameBoard) PreviousTurn() string {
+  if g.Turn == "X" {
+    return "O"
+  }
+  return "X"
+}
+  
+
 func (g GameBoard) RemainingIndices() (remaining_indices []int) {
   for i, value := range g.Board {
     if value == "-" {

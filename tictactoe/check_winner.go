@@ -89,6 +89,13 @@ func HorizontalWin(board []string, turn string) bool {
   return are_equal
 }
 
+func (g GameBoard) Win() bool {
+  if VerticalWin(g.Board, g.PreviousTurn()) == true || HorizontalWin(g.Board, g.PreviousTurn()) == true || DiagonalWin(g.Board, g.PreviousTurn()) == true {
+    return true
+  }
+  return false
+}
+
 func VerticalWin(board []string, turn string) bool {
   sliced_board := transpose(slice_rows(board))
   are_equal := false

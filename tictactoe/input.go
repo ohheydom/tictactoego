@@ -26,7 +26,7 @@ func GridSizeMessage()(dim int) {
 }
 
 func LoopThroughMoves(g GameBoard) {
-  for false == false {
+  for g.Win() == false {
     var move int
     DisplayAskForMove()
     _, err := fmt.Scanf("%d", &move)
