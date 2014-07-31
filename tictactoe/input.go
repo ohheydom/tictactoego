@@ -17,7 +17,7 @@ func ValidMove(remaining_indices []int, move int) bool {
   return false
 }
 
-func GridSizeMessage()(dim int) {
+func GridSizeMessage() (dim int) {
   fmt.Printf("What size grid would you like to play on?? Please enter only one dimension (ie 3, 4, or 5): ")
   _, err := fmt.Scanf("%d", &dim)
   if err != nil {

@@ -28,7 +28,6 @@ func (g GameBoard) PreviousTurn() string {
   }
   return "X"
 }
-  
 
 func (g GameBoard) RemainingIndices() (remaining_indices []int) {
   for i, value := range g.Board {
