@@ -2,10 +2,16 @@ package tictactoe
 
 import "fmt"
 
-func (g GameBoard) Move(ind int, turn string) {
+func (g *GameBoard) Move(ind int, turn string) {
   if g.Board[ind] == "-" {
     g.Board[ind] = turn
+    g.SwitchTurn()
   }
+}
+
+func (g *GameBoard) UndoMove(ind int) {
+  g.Board[ind] = "-"
+  g.SwitchTurn()
 }
 
 func ValidMove(remaining_indices []int, move int) bool {
@@ -34,7 +40,6 @@ func LoopThroughMoves(g *GameBoard) {
       fmt.Println("Please Enter A Valid Move")
     } else {
       g.Move(move, g.Turn)
-      g.SwitchTurn()
     } 
     DisplayBoard(g.Board)
     DisplayRemainingMoves(g)

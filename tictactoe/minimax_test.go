@@ -4,7 +4,7 @@ import "testing"
 
 func TestMiniMax(t *testing.T) {
   win_x := []string{"X", "X", "X", "-", "O", "O", "O", "-", "-"}
-  win_o := []string{"O", "X", "X", "-", "O", "-", "-", "-", "O"}
+  win_o := []string{"O", "X", "X", "-", "-", "-", "-", "-", "O"}
   g_x := GameBoard{Board: win_x, Turn: "O"}
   g_o := GameBoard{Board: win_o, Turn: "X"}
   expected_minimax_win_x := 100
@@ -19,5 +19,4 @@ func TestMiniMax(t *testing.T) {
   if expected_minimax_win_o != minimax_win_o {
     t.Error("Expected: ", expected_minimax_win_o, "Got: ", minimax_win_o)
   }
-
 }

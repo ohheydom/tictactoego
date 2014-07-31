@@ -1,5 +1,7 @@
 package tictactoe
 
+import "fmt"
+
 func max(x, y int) int {
   if x > y {
     return x
@@ -25,13 +27,15 @@ func MiniMax(g GameBoard, depth int, max_player bool) int {
     return 0
   }
 
+  fmt.Println(g.Board)
   best_value := -1000
 
   if max_player {
     best_value = -1000
     for _, move := range g.RemainingIndices() {
       g.Move(move, "X")
-      value := MiniMax(g, depth - 1, false)
+      value := MiniMax(g, depth + 1, false)
+      g.UndoMove(move)
       best_value = max(best_value, value)
       return best_value
     }  
@@ -40,6 +44,7 @@ func MiniMax(g GameBoard, depth int, max_player bool) int {
     for _, move := range g.RemainingIndices() {
       g.Move(move, "O")
       value := MiniMax(g, depth -1, true)
+      g.UndoMove(move)
       best_value = min(best_value, value)
       return best_value
     }
