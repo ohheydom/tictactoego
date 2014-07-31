@@ -1,0 +1,5 @@
+package tictactoe
+
+func MiniMax() {
+
+}
