@@ -20,3 +20,15 @@ func DisplayBoard(board []string) {
   }
   horizontal_bars(dimension)
 }
+
+func DisplayTurn(g GameBoard) {
+  fmt.Println("Current Turn:", g.Turn)
+}
+
+func DisplayAskForMove() {
+  fmt.Println("Make your move: ")
+}
+
+func DisplayRemainingMoves(g GameBoard) {
+  fmt.Println("Remaining Moves:", g.RemainingIndices())
+}
