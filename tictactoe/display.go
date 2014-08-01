@@ -34,7 +34,7 @@ func DisplayPlayAgain() {
   _, err := fmt.Scanf("%s", &yes_or_no)
   if err != nil {
   } else {
-    if strings.ToUpper(yes_or_no) == "YES" || yes_or_no == "Y" {
+    if strings.ToUpper(yes_or_no) == "YES" || strings.ToUpper(yes_or_no) == "Y" {
       Play()
     }
   }

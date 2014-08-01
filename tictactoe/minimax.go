@@ -57,3 +57,30 @@ func (g GameBoard) MiniMaxMoves() [][]int {
   }
   return score
 }
+
+func max_by_score(arr [][]int) []int {
+  top := arr[0]
+  for _, val := range arr {
+    if top[0] < val[0] {
+      top = val
+    }
+  }
+  return top
+}
+
+func min_by_score(arr [][]int) []int {
+  top := arr[0]
+  for _, val := range arr {
+    if top[0] > val[0] {
+      top = val
+    }
+  }
+  return top
+}
+
+func (g GameBoard) BestMove() int {
+  if g.Turn == "X" {
+    return max_by_score(g.MiniMaxMoves())[1]
+  }
+  return min_by_score(g.MiniMaxMoves())[1]
+}

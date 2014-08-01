@@ -20,3 +20,11 @@ func TestMiniMax(t *testing.T) {
     t.Error("Expected: ", expected_minimax_win_o, "Got: ", minimax_win_o)
   }
 }
+
+func BenchmarkBestMove(b *testing.B) {
+  board := []string{"-", "-", "-", "X", "-", "-", "-", "-", "-"}
+  g := GameBoard{Board: board, Turn: "O"}
+  for i := 0; i < b.N; i++ {
+    g.BestMove()
+  }
+}

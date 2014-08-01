@@ -33,6 +33,7 @@ func GridSizeMessage() (dim int) {
 
 func LoopThroughMoves(g *GameBoard) {
   for g.Win() == false {
+    if g.Turn == "X" {
     var move int
     DisplayAskForMove()
     _, err := fmt.Scanf("%d", &move)
@@ -40,7 +41,10 @@ func LoopThroughMoves(g *GameBoard) {
       fmt.Println("Please Enter A Valid Move")
     } else {
       g.Move(move, g.Turn)
-    } 
+    }
+    } else {
+      g.Move(g.BestMove(), g.Turn)
+    }
     DisplayBoard(g.Board)
     DisplayRemainingMoves(g)
     DisplayTurn(g)
