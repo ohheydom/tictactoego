@@ -1,29 +1,11 @@
 package tictactoe
 
-import "fmt"
+import (
+  "fmt"
+  "strings"
+)
 
-func (g *GameBoard) Move(ind int, turn string) {
-  if g.Board[ind] == "-" {
-    g.Board[ind] = turn
-    g.SwitchTurn()
-  }
-}
-
-func (g *GameBoard) UndoMove(ind int) {
-  g.Board[ind] = "-"
-  g.SwitchTurn()
-}
-
-func ValidMove(remaining_indices []int, move int) bool {
-  for _, valid_move := range remaining_indices {
-    if valid_move == move {
-      return true
-    }
-  }
-  return false
-}
-
-func GridSizeMessage() (dim int) {
+func InputGridSize() (dim int) {
   fmt.Printf("What size grid would you like to play on?? Please enter only one dimension (ie 3, 4, or 5): ")
   _, err := fmt.Scanf("%d", &dim)
   if err != nil {
@@ -31,17 +13,17 @@ func GridSizeMessage() (dim int) {
   return
 }
 
-func LoopThroughMoves(g *GameBoard) {
+func InputMove(g *GameBoard) {
   for g.Win() == false {
     if g.Turn == "X" {
-    var move int
-    DisplayAskForMove()
-    _, err := fmt.Scanf("%d", &move)
-    if err != nil || ValidMove(g.RemainingIndices(), move) == false {
-      fmt.Println("Please Enter A Valid Move")
-    } else {
-      g.Move(move, g.Turn)
-    }
+      var move int
+      fmt.Println("Make your move: ")
+      _, err := fmt.Scanf("%d", &move)
+      if err != nil || ValidMove(g.RemainingIndices(), move) == false {
+        fmt.Println("Please Enter A Valid Move")
+      } else {
+        g.Move(move, g.Turn)
+      }
     } else {
       g.Move(g.BestMove(), g.Turn)
     }
@@ -50,6 +32,18 @@ func LoopThroughMoves(g *GameBoard) {
     DisplayTurn(g)
     if len(g.RemainingIndices()) == 0 {
       break
+    }
+  }
+}
+
+func InputPlayAgain() {
+  var yes_or_no string
+  fmt.Printf("Would you like to play again?? ")
+  _, err := fmt.Scanf("%s", &yes_or_no)
+  if err != nil {
+  } else {
+    if strings.ToUpper(yes_or_no) == "YES" || strings.ToUpper(yes_or_no) == "Y" {
+      Play()
     }
   }
 }
