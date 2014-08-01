@@ -52,3 +52,20 @@ func TransposeDiagonal(sliced_board [][]string) [][]string {
   }
   return [][]string{temp_slice[0:dimension], temp_slice[dimension:dimension * 2]}
 }
+
+func All(board [][]string, value string) bool {
+  are_equal := false
+  for _, row := range board {
+    count := 0
+    for _, mark := range row {
+      if mark == value { 
+        count += 1
+      }
+      if count == len(row) {
+        are_equal = true
+        break
+      }
+    }
+  }
+  return are_equal
+}
