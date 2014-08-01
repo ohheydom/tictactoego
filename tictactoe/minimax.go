@@ -1,19 +1,5 @@
 package tictactoe
 
-func max(x, y int) int {
-  if x > y {
-    return x
-  }
-  return y
-}
-
-func min(x, y int) int {
-  if x < y {
-    return x
-  }
-  return y
-}
-
 func MiniMax(g GameBoard, depth int, max_player bool) int {
   if g.Win() {
     if g.PreviousTurn() == "X" {
@@ -31,7 +17,7 @@ func MiniMax(g GameBoard, depth int, max_player bool) int {
       g.Move(move, "X")
       value := MiniMax(g, depth + 1, false)
       g.UndoMove(move)
-      best_value = max(best_value, value)
+      best_value = Max(best_value, value)
     }
     return best_value
   } else {
@@ -40,7 +26,7 @@ func MiniMax(g GameBoard, depth int, max_player bool) int {
       g.Move(move, "O")
       value := MiniMax(g, depth + 1, true)
       g.UndoMove(move)
-      best_value = min(best_value, value)
+      best_value = Min(best_value, value)
     }
     return best_value
   }
