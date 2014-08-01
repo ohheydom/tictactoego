@@ -2,6 +2,26 @@ package tictactoe
 
 import "math"
 
+func MaxBy(arr [][]int, index int) []int {
+  top := arr[0]
+  for _, val := range arr {
+    if top[index] < val[index] {
+      top = val
+    }
+  }
+  return top
+}
+
+func MinBy(arr [][]int, index int) []int {
+  top := arr[0]
+  for _, val := range arr {
+    if top[index] > val[index] {
+      top = val
+    }
+  }
+  return top
+}
+
 func SliceRows(board []string) [][]string {
   dimension := int(math.Sqrt(float64(len(board))))
   var sliced_board [][]string

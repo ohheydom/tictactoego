@@ -11,7 +11,7 @@ func MiniMax(g GameBoard, depth int, max_player bool) int {
     return 0
   }
 
-  if max_player == true {
+  if max_player {
     best_value := -1000
     for _, move := range g.RemainingIndices() {
       g.Move(move, "X")
@@ -44,29 +44,9 @@ func (g GameBoard) MiniMaxMoves() [][]int {
   return score
 }
 
-func max_by_score(arr [][]int) []int {
-  top := arr[0]
-  for _, val := range arr {
-    if top[0] < val[0] {
-      top = val
-    }
-  }
-  return top
-}
-
-func min_by_score(arr [][]int) []int {
-  top := arr[0]
-  for _, val := range arr {
-    if top[0] > val[0] {
-      top = val
-    }
-  }
-  return top
-}
-
 func (g GameBoard) BestMove() int {
   if g.Turn == "X" {
-    return max_by_score(g.MiniMaxMoves())[1]
+    return MaxBy(g.MiniMaxMoves(), 0)[1]
   }
-  return min_by_score(g.MiniMaxMoves())[1]
+  return MinBy(g.MiniMaxMoves(), 0)[1]
 }
