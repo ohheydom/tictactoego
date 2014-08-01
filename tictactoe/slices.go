@@ -22,13 +22,15 @@ func ReverseSlice(sliced_board [][]string) [][]string {
 }
 
 func Transpose(sliced_board [][]string) [][]string {
-  var temp_slice []string
-  for row_ind, row := range sliced_board {
-    for val_ind := range row {
-      temp_slice = append(temp_slice, sliced_board[val_ind][row_ind])
-    }
+  len_a := len(sliced_board) //2
+  len_b := len(sliced_board[0]) //3
+  temp_slice := make([][]string, len_b)
+  for i := 0; i < len_b; i++ {
+    for ib := 0; ib < len_a; ib++ {
+      temp_slice[i] = append(temp_slice[i], sliced_board[ib][i])
+    }  
   }
-  return SliceRows(temp_slice)
+  return temp_slice
 }
 
 func TransposeDiagonal(sliced_board [][]string) [][]string {
