@@ -91,3 +91,11 @@ func All(board [][]string, value string) bool {
   }
   return are_equal
 }
+
+func AddOneToSliceValues(slice []int) []int {
+  var new_slice []int
+  for _, val := range slice {
+    new_slice = append(new_slice, val + 1)
+  }
+  return new_slice
+}

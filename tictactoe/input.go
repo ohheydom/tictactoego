@@ -19,10 +19,10 @@ func InputMove(g *GameBoard) {
       var move int
       fmt.Println("Make your move: ")
       _, err := fmt.Scanf("%d", &move)
-      if err != nil || ValidMove(g.RemainingIndices(), move) == false {
+      if err != nil || ValidMove(g.RemainingIndices(), move - 1) == false {
         fmt.Println("Please Enter A Valid Move")
       } else {
-        g.Move(move, g.Turn)
+        g.Move(move - 1, g.Turn)
       }
     } else {
       g.Move(g.BestMove(), g.Turn)

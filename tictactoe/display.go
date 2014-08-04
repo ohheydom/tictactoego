@@ -10,6 +10,7 @@ func Play() {
   dim := InputGridSize()
   game := GameBoard{CreateBoard(dim), "X"}
   DisplayBoard(game.Board)
+  DisplayRemainingMoves(&game)
   DisplayTurn(&game)
   InputMove(&game)
   DisplayWinner(game)
@@ -32,7 +33,7 @@ func DisplayBoard(board []string) {
 }
 
 func DisplayRemainingMoves(g *GameBoard) {
-  fmt.Println("Remaining Moves:", g.RemainingIndices())
+  fmt.Println("Remaining Moves:", AddOneToSliceValues(g.RemainingIndices()))
 }
 
 func DisplayTurn(g *GameBoard) {
