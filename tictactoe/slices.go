@@ -76,20 +76,18 @@ func TransposeDiagonal(sliced_board [][]string) [][]string {
 }
 
 func All(board [][]string, value string) bool {
-  are_equal := false
   for _, row := range board {
     count := 0
     for _, mark := range row {
       if mark == value { 
         count += 1
-      }
+      } else { break }
       if count == len(row) {
-        are_equal = true
-        break
+        return true
       }
     }
   }
-  return are_equal
+  return false
 }
 
 func AddOneToSliceValues(slice []int) []int {

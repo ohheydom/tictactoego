@@ -27,3 +27,20 @@ func TestTransposeDiagonal(t *testing.T) {
     t.Error("Expected", transposed_board, "got", tran)
   } 
 }
+
+func TestAll(t *testing.T) {
+  board := [][]string{[]string{"X", "X", "X"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
+  expected_value := true
+  received_value := All(board, "X")
+  if expected_value != received_value {
+    t.Error("Expected: ", expected_value, "Received: ", received_value)
+  }
+}
+
+func BenchmarkAll(b *testing.B) {
+  board := [][]string{[]string{"X", "X", "X"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
+  for i := 0; i < b.N; i++ {
+    All(board, "X")
+  }
+}
+
