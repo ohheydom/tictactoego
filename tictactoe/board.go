@@ -28,13 +28,14 @@ func (g GameBoard) PreviousTurn() string {
   return "X"
 }
 
-func (g GameBoard) RemainingIndices() (remaining_indices []int) {
+func (g GameBoard) RemainingIndices() []int {
+  remaining_indices := make([]int, 0, len(g.Board))
   for i, value := range g.Board {
     if value == "-" {
       remaining_indices = append(remaining_indices, i)
     }
   }
-  return
+  return remaining_indices
 }
 
 func (g *GameBoard) SwitchTurn() {
