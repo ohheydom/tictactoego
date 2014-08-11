@@ -30,7 +30,6 @@ func MiniMax(g GameBoard, depth int, max_player bool) int {
     }
     return best_value
   }
-  return 0
 }
 
 func (g GameBoard) MiniMaxMoves() [][]int {
@@ -44,7 +43,7 @@ func (g GameBoard) MiniMaxMoves() [][]int {
   return score
 }
 
-func (g GameBoard) BestMove() int {
+func (g GameBoard) MiniMaxBestMove() int {
   if g.Turn == "X" {
     return MaxBy(g.MiniMaxMoves(), 0)[1]
   }
