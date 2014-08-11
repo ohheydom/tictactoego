@@ -17,7 +17,7 @@ func AlphaBeta(g GameBoard, depth int, alpha int, beta int, max_player bool) int
       alpha = Max(alpha, AlphaBeta(g, depth + 1, alpha, beta, false))
       g.UndoMove(move)
       if beta <= alpha {
-        break
+        return alpha
       }
     }
     return alpha
@@ -27,7 +27,7 @@ func AlphaBeta(g GameBoard, depth int, alpha int, beta int, max_player bool) int
       beta = Min(beta, AlphaBeta(g, depth + 1, alpha, beta, true))
       g.UndoMove(move)
       if beta <= alpha {
-        break
+        return beta
       }
     }
     return beta
