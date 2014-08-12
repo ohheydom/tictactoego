@@ -50,3 +50,11 @@ func TestDiagonalWin(t *testing.T) {
     t.Error("Expected True")
   }
 }
+
+func BenchmarkWin(b *testing.B) {
+  board := []string{"-", "-", "-", "X", "-", "-", "-", "-", "-"}
+  g := GameBoard{Board: board, Turn: "O"}
+  for i := 0; i < b.N; i++ {
+    g.Win()
+  }
+}

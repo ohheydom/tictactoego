@@ -44,3 +44,16 @@ func BenchmarkAll(b *testing.B) {
   }
 }
 
+func BenchmarkMaxBy(b *testing.B) {
+  arr := [][]int{[]int{0, 99}, []int{1, 100}, []int{2, 98}, []int{3, 93}, []int{4,101}, []int{5, -101}, []int{6, 45}, []int{7, 88}, []int{8, -22}}
+  for i := 0; i < b.N; i++ {
+    MaxBy(arr, 0)
+  }
+} 
+
+func BenchmarkSliceRows(b *testing.B) {
+  board := []string{"X", "-", "-", "X", "O", "O", "-", "-", "-"}
+  for i := 0; i < b.N; i++ {
+    SliceRows(board)
+  }
+}
