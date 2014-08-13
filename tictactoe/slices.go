@@ -24,7 +24,7 @@ func MinBy(arr [][]int, index int) []int {
 
 func SliceRows(board []string) [][]string {
   dimension := int(math.Sqrt(float64(len(board))))
-  sliced_board := make([][]string, 0, len(board))
+  sliced_board := make([][]string, 0, dimension)
   for i := 0; i < len(board); {
     sliced_board = append(sliced_board, board[i:i + dimension])
     i += dimension
