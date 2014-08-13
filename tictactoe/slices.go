@@ -33,9 +33,10 @@ func SliceRows(board []string) [][]string {
 }
 
 func ReverseSlice(sliced_board [][]string) [][]string {
-  var temp_slice [][]string
-  for i := len(sliced_board) - 1; i >= 0; i-- {
-    temp_slice = append(temp_slice, sliced_board[i])
+  temp_slice := make([][]string, len(sliced_board))
+  for i, idx := len(sliced_board) - 1, 0; i >= 0; i-- {
+    temp_slice[idx] = sliced_board[i]
+    idx += 1
   }
   return temp_slice
 }
