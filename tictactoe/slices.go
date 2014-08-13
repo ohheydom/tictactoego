@@ -83,11 +83,10 @@ func All(board [][]string, value string) bool {
 }
 
 func AddOneToSliceValues(slice []int) []int {
-  var new_slice []int
-  for _, val := range slice {
-    new_slice = append(new_slice, val + 1)
+  for i := 0; i < len(slice); i++{
+    slice[i] = slice[i] + 1
   }
-  return new_slice
+  return slice
 }
 
 func MatchSlice(arr []string, slice [][]int, turn string) bool {
