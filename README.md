@@ -10,6 +10,8 @@ To start, type the following into the command prompt.
 go run tictactoego
 ```
 
+It will ask for the size of the board. As of right now, only 3 X 3 works efficiently.
+
 The numbers 1 through 9 correspond to each individual square. Like so:
 
 ```

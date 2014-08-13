@@ -96,3 +96,16 @@ func AddOneToSliceValues(slice []int) []int {
   }
   return new_slice
 }
+
+func MatchSlice(arr []string, slice [][]int, turn string) bool {
+  for i := 0; i < len(slice); i++ {
+    for ib, count := 1, 0; ib < len(slice[0]); ib++ {
+      if arr[slice[i][ib]] != turn { break }
+      if arr[slice[i][ib]] == arr[slice[i][ib - 1]] {
+        count += 1
+      }
+      if count == len(slice[0]) - 1 { return true }
+    }
+  }
+  return false
+}
