@@ -53,24 +53,17 @@ func Transpose(sliced_board [][]string) [][]string {
 }
 
 func TransposeDiagonal(sliced_board [][]string) [][]string {
-  var temp_slice []string
   dimension := len(sliced_board)
+  temp_slice := make([]string, 0, dimension)
   reverse_sliced_board := ReverseSlice(sliced_board)
-  for row_ind, row := range sliced_board {
-    for val_ind := range row {
-      if val_ind == row_ind {
-        temp_slice = append(temp_slice, sliced_board[val_ind][row_ind])
-      }
-    }
+  for i := 0; i < dimension; i++ {
+    temp_slice = append(temp_slice, sliced_board[i][i])
   }
 
-  for row_ind, row := range reverse_sliced_board {
-    for val_ind := range row {
-      if val_ind == row_ind {
-        temp_slice = append(temp_slice, reverse_sliced_board[val_ind][row_ind])
-      }
-    }
+  for i := 0; i < dimension; i++ {
+    temp_slice = append(temp_slice, reverse_sliced_board[i][i])
   }
+
   return [][]string{temp_slice[0:dimension], temp_slice[dimension:dimension * 2]}
 }
 

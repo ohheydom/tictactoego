@@ -1,7 +1,27 @@
 package tictactoe
 
-import "testing"
-import "reflect"
+import (
+  "testing"
+  "reflect"
+)
+
+func TestAll(t *testing.T) {
+  board := [][]string{[]string{"X", "X", "X"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
+  expected_value := true
+  received_value := All(board, "X")
+  if expected_value != received_value {
+    t.Error("Expected: ", expected_value, "Received: ", received_value)
+  }
+}
+
+func TestReverseSlice(t *testing.T) {
+  initial_board := [][]string{[]string{"X", "X", "-"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
+  expected_board := [][]string{[]string{"-", "X", "O"}, []string{"-", "O", "O"}, []string{"X", "X", "-"}}
+  received_board := ReverseSlice(initial_board)
+  if !reflect.DeepEqual(expected_board, received_board) {
+    t.Error("Expected", expected_board, "got", received_board)
+  } 
+}
 
 func TestTranspose(t *testing.T) {
   initial_board := [][]string{[]string{"X", "X", "-"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
@@ -26,15 +46,6 @@ func TestTransposeDiagonal(t *testing.T) {
   if !reflect.DeepEqual(tran, transposed_board) {
     t.Error("Expected", transposed_board, "got", tran)
   } 
-}
-
-func TestAll(t *testing.T) {
-  board := [][]string{[]string{"X", "X", "X"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
-  expected_value := true
-  received_value := All(board, "X")
-  if expected_value != received_value {
-    t.Error("Expected: ", expected_value, "Received: ", received_value)
-  }
 }
 
 func TestMatchSlice(t *testing.T) {
@@ -73,5 +84,12 @@ func BenchmarkMatchSlice(b *testing.B) {
   indexes := [][]int{[]int{0, 1, 2}, []int{3, 4, 5}, []int{6, 7, 8}}
   for i:= 0; i < b.N; i++ {
     MatchSlice(win_x, indexes, "X")
+  }
+}
+
+func BenchmarkReverseSlice(b *testing.B) {
+  board := [][]string{[]string{"X", "O", "X"}, []string{"X", "O", "O"}, []string{"X", "O", "X"}}
+  for i:= 0; i < b.N; i++ {
+    ReverseSlice(board)
   }
 }
