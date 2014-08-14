@@ -18,6 +18,7 @@ func VerticalWin(board []string, turn string) bool {
 }
 
 func (g GameBoard) Win() bool {
+  if g.Count < 5 { return false }
   if VerticalWin(g.Board, g.PreviousTurn()) || HorizontalWin(g.Board, g.PreviousTurn()) || DiagonalWin(g.Board, g.PreviousTurn()) {
     return true
   }
