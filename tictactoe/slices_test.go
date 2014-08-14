@@ -39,6 +39,15 @@ func TestTranspose(t *testing.T) {
   } 
 }
 
+func TestTransposeSquare(t *testing.T) {
+  initial_board := [][]string{[]string{"X", "X", "-"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
+  expected_transposed_board := [][]string{[]string{"X", "-", "-"}, []string{"X", "O", "X"}, []string{"-", "O", "O"}}
+  calculated_transposed_board := TransposeSquare(initial_board)
+  if !reflect.DeepEqual(expected_transposed_board, calculated_transposed_board) {
+    t.Error("Expected", expected_transposed_board, "got", calculated_transposed_board)
+  } 
+}
+
 func TestTransposeDiagonal(t *testing.T) {
   initial_board := [][]string{[]string{"X", "X", "-"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
   transposed_board := [][]string{[]string{"X", "O", "O"}, []string{"-", "O", "-"}}

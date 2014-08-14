@@ -44,6 +44,7 @@ func ReverseSlice(sliced_board [][]string) [][]string {
 func Transpose(sliced_board [][]string) [][]string {
   len_a := len(sliced_board)
   len_b := len(sliced_board[0])
+  if len_a == len_b { return TransposeSquare(sliced_board) }
   temp_slice := make([][]string, len_b)
   for i := 0; i < len_b; i++ {
     for ib := 0; ib < len_a; ib++ {
@@ -51,6 +52,16 @@ func Transpose(sliced_board [][]string) [][]string {
     }  
   }
   return temp_slice
+}
+
+func TransposeSquare(sliced_board [][]string) [][]string {
+  len_a := len(sliced_board)
+  for n := 0; n < len_a - 1; n++ {
+    for m := n + 1; m < len_a; m++ {
+      sliced_board[n][m], sliced_board[m][n] = sliced_board[m][n], sliced_board[n][m]
+    }
+  }
+  return sliced_board
 }
 
 func TransposeDiagonal(sliced_board [][]string) [][]string {

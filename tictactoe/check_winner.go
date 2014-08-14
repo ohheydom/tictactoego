@@ -12,7 +12,9 @@ func HorizontalWin(board []string, turn string) bool {
 
 func VerticalWin(board []string, turn string) bool {
   sliced_board := Transpose(SliceRows(board))
-  return All(sliced_board, turn)
+  x := All(sliced_board, turn)
+  Transpose(sliced_board)
+  return x
 }
 
 func (g GameBoard) Win() bool {
