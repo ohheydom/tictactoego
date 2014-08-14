@@ -8,7 +8,8 @@ import (
 
 func Play() {
   dim := InputGridSize()
-  game := GameBoard{CreateBoard(dim), "X", 0}
+  results := make(map[string]int)
+  game := GameBoard{CreateBoard(dim), "X", 0, results}
   DisplayBoard(game.Board)
   DisplayRemainingMoves(&game)
   DisplayTurn(&game)

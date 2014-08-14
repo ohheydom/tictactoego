@@ -1,6 +1,10 @@
 package tictactoe
 
+import "strings"
+
 func MiniMax(g GameBoard, depth int, max_player bool) int {
+  val, ok := g.Result[strings.Join(g.Board, "")]
+  if ok { return val }
   if g.Win() {
     if g.PreviousTurn() == "X" {
       return 100 - depth
@@ -19,6 +23,7 @@ func MiniMax(g GameBoard, depth int, max_player bool) int {
       g.UndoMove(move)
       best_value = Max(best_value, value)
     }
+    g.Result[strings.Join(g.Board, "")] = best_value
     return best_value
   } else {
     best_value := 1000
@@ -28,6 +33,7 @@ func MiniMax(g GameBoard, depth int, max_player bool) int {
       g.UndoMove(move)
       best_value = Min(best_value, value)
     }
+    g.Result[strings.Join(g.Board, "")] = best_value
     return best_value
   }
 }

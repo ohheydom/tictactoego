@@ -5,8 +5,9 @@ import "testing"
 func TestAlphaBeta(t *testing.T) {
   win_x := []string{"X", "-", "-", "X", "O", "O", "-", "-", "-"}
   win_o := []string{"O", "O", "-", "X", "X", "-", "O", "-", "X"}
-  g_x := GameBoard{Board: win_x, Turn: "X", Count: 4}
-  g_o := GameBoard{Board: win_o, Turn: "O", Count: 6}
+  results := make(map[string]int)
+  g_x := GameBoard{Board: win_x, Turn: "X", Count: 4, Result: results}
+  g_o := GameBoard{Board: win_o, Turn: "O", Count: 6, Result: results}
   expected_minimax_win_x := 99
   minimax_win_x := AlphaBeta(g_x, 0, -1000, 1000, true)
   expected_minimax_win_o := -99
@@ -23,7 +24,8 @@ func TestAlphaBeta(t *testing.T) {
 
 func BenchmarkBestMoveAlphaBeta(b *testing.B) {
   board := []string{"-", "-", "-", "X", "-", "-", "-", "-", "-"}
-  g := GameBoard{Board: board, Turn: "O"}
+  results := make(map[string]int)
+  g := GameBoard{Board: board, Turn: "O", Result: results}
   for i := 0; i < b.N; i++ {
     g.AlphaBetaBestMove()
   }

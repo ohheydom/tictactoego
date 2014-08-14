@@ -25,7 +25,7 @@ func InputMove(g *GameBoard) {
         g.Move(move - 1, g.Turn)
       }
     } else {
-      g.Move(g.AlphaBetaBestMove(), g.Turn)
+      g.Move(g.MiniMaxBestMove(), g.Turn)
     }
     DisplayBoard(g.Board)
     DisplayRemainingMoves(g)

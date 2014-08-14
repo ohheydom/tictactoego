@@ -4,6 +4,7 @@ type GameBoard struct {
   Board []string
   Turn string
   Count int
+  Result map[string]int
 }
 
 func CreateBoard(size int) []string {
