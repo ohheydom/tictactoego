@@ -103,6 +103,13 @@ func BenchmarkReverseSlice(b *testing.B) {
   }
 }
 
+func BenchmarkTranspose(b *testing.B) {
+  board := [][]string{[]string{"X", "O", "X"}, []string{"X", "O", "O"}, []string{"X", "O", "X"}}
+  for i:= 0; i < b.N; i++ {
+    Transpose(board)
+  }
+}
+
 func BenchmarkAddOneToSliceValues(b *testing.B) {
   board := []int{0, 1, 2, 3, 4, 5, 6, 7, 8}
   for i:= 0; i < b.N; i++ {

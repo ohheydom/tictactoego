@@ -67,16 +67,13 @@ func TransposeSquare(sliced_board [][]string) [][]string {
 func TransposeDiagonal(sliced_board [][]string) [][]string {
   dimension := len(sliced_board)
   temp_slice := make([]string, 0, dimension)
+  temp_slice_2 := make([]string, 0, dimension)
   reverse_sliced_board := ReverseSlice(sliced_board)
   for i := 0; i < dimension; i++ {
     temp_slice = append(temp_slice, sliced_board[i][i])
+    temp_slice_2 = append(temp_slice_2, reverse_sliced_board[i][i])
   }
-
-  for i := 0; i < dimension; i++ {
-    temp_slice = append(temp_slice, reverse_sliced_board[i][i])
-  }
-
-  return [][]string{temp_slice[0:dimension], temp_slice[dimension:dimension * 2]}
+  return [][]string{temp_slice, temp_slice_2}
 }
 
 func All(board [][]string, value string) bool {
