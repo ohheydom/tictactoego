@@ -1,6 +1,11 @@
 package tictactoe
 
+import "strings"
+
 func AlphaBeta(g GameBoard, depth int, alpha int, beta int, max_player bool) int {
+  board_string := strings.Join(g.Board, "")
+  val, ok := g.Result[board_string]
+  if ok { return val }
   if g.Win() {
     if g.PreviousTurn() == "X" {
       return 100 - depth
@@ -17,6 +22,7 @@ func AlphaBeta(g GameBoard, depth int, alpha int, beta int, max_player bool) int
       alpha = Max(alpha, AlphaBeta(g, depth + 1, alpha, beta, false))
       g.UndoMove(move)
       if beta <= alpha {
+        g.Result[board_string] = alpha
         return alpha
       }
     }

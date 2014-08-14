@@ -3,7 +3,8 @@ package tictactoe
 import "strings"
 
 func MiniMax(g GameBoard, depth int, max_player bool) int {
-  val, ok := g.Result[strings.Join(g.Board, "")]
+  board_string := strings.Join(g.Board, "")
+  val, ok := g.Result[board_string]
   if ok { return val }
   if g.Win() {
     if g.PreviousTurn() == "X" {
@@ -23,7 +24,7 @@ func MiniMax(g GameBoard, depth int, max_player bool) int {
       g.UndoMove(move)
       best_value = Max(best_value, value)
     }
-    g.Result[strings.Join(g.Board, "")] = best_value
+    g.Result[board_string] = best_value
     return best_value
   } else {
     best_value := 1000
@@ -33,7 +34,7 @@ func MiniMax(g GameBoard, depth int, max_player bool) int {
       g.UndoMove(move)
       best_value = Min(best_value, value)
     }
-    g.Result[strings.Join(g.Board, "")] = best_value
+    g.Result[board_string] = best_value
     return best_value
   }
 }
