@@ -25,7 +25,7 @@ func TestMiniMax(t *testing.T) {
 func BenchmarkBestMoveMiniMax(b *testing.B) {
   board := []string{"-", "-", "-", "X", "-", "-", "-", "-", "-"}
   results := make(map[string]int)
-  g := GameBoard{Board: board, Turn: "O", Result: results}
+  g := GameBoard{Board: board, Turn: "O", Count: 1, Result: results}
   for i := 0; i < b.N; i++ {
     g.MiniMaxBestMove()
   }
