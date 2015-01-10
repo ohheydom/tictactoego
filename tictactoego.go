@@ -1,9 +1,9 @@
 package main
 
 import (
-  . "./tictactoe/"
+	. "./tictactoe/"
 )
 
 func main() {
-  Play()
+	Play()
 }

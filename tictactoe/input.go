@@ -1,49 +1,49 @@
 package tictactoe
 
 import (
-  "fmt"
-  "strings"
+	"fmt"
+	"strings"
 )
 
 func InputGridSize() (dim int) {
-  fmt.Printf("What size grid would you like to play on?? Please enter only one dimension (ie 3, 4, or 5): ")
-  _, err := fmt.Scanf("%d", &dim)
-  if err != nil {
-  }
-  return
+	fmt.Printf("What size grid would you like to play on?? Please enter only one dimension (ie 3, 4, or 5): ")
+	_, err := fmt.Scanf("%d", &dim)
+	if err != nil {
+	}
+	return
 }
 
 func InputMove(g *GameBoard) {
-  for g.Win() == false {
-    if g.Turn == "X" {
-      var move int
-      fmt.Println("Make your move: ")
-      _, err := fmt.Scanf("%d", &move)
-      if err != nil || ValidMove(g.RemainingIndices(), move - 1) == false {
-        fmt.Println("Please Enter A Valid Move")
-      } else {
-        g.Move(move - 1, g.Turn)
-      }
-    } else {
-      g.Move(g.MiniMaxBestMove(), g.Turn)
-    }
-    DisplayBoard(g.Board)
-    DisplayRemainingMoves(g)
-    DisplayTurn(g)
-    if len(g.RemainingIndices()) == 0 {
-      break
-    }
-  }
+	for g.Win() == false {
+		if g.Turn == "X" {
+			var move int
+			fmt.Println("Make your move: ")
+			_, err := fmt.Scanf("%d", &move)
+			if err != nil || ValidMove(g.RemainingIndices(), move-1) == false {
+				fmt.Println("Please Enter A Valid Move")
+			} else {
+				g.Move(move-1, g.Turn)
+			}
+		} else {
+			g.Move(g.MiniMaxBestMove(), g.Turn)
+		}
+		DisplayBoard(g.Board)
+		DisplayRemainingMoves(g)
+		DisplayTurn(g)
+		if len(g.RemainingIndices()) == 0 {
+			break
+		}
+	}
 }
 
 func InputPlayAgain() {
-  var yes_or_no string
-  fmt.Printf("Would you like to play again?? ")
-  _, err := fmt.Scanf("%s", &yes_or_no)
-  if err != nil {
-  } else {
-    if strings.ToUpper(yes_or_no) == "YES" || strings.ToUpper(yes_or_no) == "Y" {
-      Play()
-    }
-  }
+	var yes_or_no string
+	fmt.Printf("Would you like to play again?? ")
+	_, err := fmt.Scanf("%s", &yes_or_no)
+	if err != nil {
+	} else {
+		if strings.ToUpper(yes_or_no) == "YES" || strings.ToUpper(yes_or_no) == "Y" {
+			Play()
+		}
+	}
 }
