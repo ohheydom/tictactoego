@@ -58,24 +58,23 @@ func Transpose(sliced_board [][]string) [][]string {
 }
 
 func TransposeSquare(sliced_board [][]string) [][]string {
-	len_a := len(sliced_board)
-	for n := 0; n < len_a-1; n++ {
-		for m := n + 1; m < len_a; m++ {
-			sliced_board[n][m], sliced_board[m][n] = sliced_board[m][n], sliced_board[n][m]
+	n := len(sliced_board)
+	for i := 0; i < n-1; i++ {
+		for j := i + 1; j < n; j++ {
+			sliced_board[i][j], sliced_board[j][i] = sliced_board[j][i], sliced_board[i][j]
 		}
 	}
 	return sliced_board
 }
 
 func TransposeDiagonal(sliced_board [][]string) [][]string {
-	dimension := len(sliced_board)
-	temp_slice := make([]string, dimension)
-	temp_slice_2 := make([]string, dimension)
-	for i := 0; i < dimension; i++ {
-		temp_slice[i] = sliced_board[i][i]
-		temp_slice_2[i] = sliced_board[i][dimension-i-1]
+	n := len(sliced_board)
+	t, t2 := make([]string, n), make([]string, n)
+	for i := 0; i < n; i++ {
+		t[i] = sliced_board[i][i]
+		t2[i] = sliced_board[i][n-i-1]
 	}
-	return [][]string{temp_slice, temp_slice_2}
+	return [][]string{t, t2}
 }
 
 func All(board [][]string, value string) bool {
@@ -83,7 +82,7 @@ func All(board [][]string, value string) bool {
 		count := 0
 		for _, mark := range row {
 			if mark == value {
-				count += 1
+				count++
 			} else {
 				break
 			}
