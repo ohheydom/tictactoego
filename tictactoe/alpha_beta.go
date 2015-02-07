@@ -49,13 +49,13 @@ func (g GameBoard) AlphaBetaBestMove() int {
 	return MinBy(g.AlphaBetaMoves(), 0)[1]
 }
 
-func (g GameBoard) AlphaBetaMoves() [][]int {
-	var score [][]int
+func (g GameBoard) AlphaBetaMoves() (score [][]int) {
+	score = make([][]int, 0, len(g.RemainingIndices()))
 	for _, move := range g.RemainingIndices() {
 		g.Move(move, g.Turn)
 		arr := []int{AlphaBeta(g, 0, -1000, 1000, true), move}
 		score = append(score, arr)
 		g.UndoMove(move)
 	}
-	return score
+	return
 }

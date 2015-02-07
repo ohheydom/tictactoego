@@ -23,9 +23,10 @@ func MinBy(arr [][]int, index int) []int {
 }
 
 func SliceRows(board []string) [][]string {
-	dimension := int(math.Sqrt(float64(len(board))))
+	n := len(board)
+	dimension := int(math.Sqrt(float64(n)))
 	sliced_board := make([][]string, 0, dimension)
-	for i := 0; i < len(board); {
+	for i := 0; i < n; {
 		sliced_board = append(sliced_board, board[i:i+dimension])
 		i += dimension
 	}
@@ -68,12 +69,11 @@ func TransposeSquare(sliced_board [][]string) [][]string {
 
 func TransposeDiagonal(sliced_board [][]string) [][]string {
 	dimension := len(sliced_board)
-	temp_slice := make([]string, 0, dimension)
-	temp_slice_2 := make([]string, 0, dimension)
-	reverse_sliced_board := ReverseSlice(sliced_board)
+	temp_slice := make([]string, dimension)
+	temp_slice_2 := make([]string, dimension)
 	for i := 0; i < dimension; i++ {
-		temp_slice = append(temp_slice, sliced_board[i][i])
-		temp_slice_2 = append(temp_slice_2, reverse_sliced_board[i][i])
+		temp_slice[i] = sliced_board[i][i]
+		temp_slice_2[i] = sliced_board[i][dimension-i-1]
 	}
 	return [][]string{temp_slice, temp_slice_2}
 }
@@ -103,15 +103,17 @@ func AddOneToSliceValues(slice []int) []int {
 }
 
 func MatchSlice(arr []string, slice [][]int, turn string) bool {
-	for i := 0; i < len(slice); i++ {
-		for ib, count := 1, 0; ib < len(slice[0]); ib++ {
+	n := len(slice)
+	nn := len(slice[0])
+	for i := 0; i < n; i++ {
+		for ib, count := 1, 0; ib < nn; ib++ {
 			if arr[slice[i][ib]] != turn {
 				break
 			}
 			if arr[slice[i][ib]] == arr[slice[i][ib-1]] {
-				count += 1
+				count++
 			}
-			if count == len(slice[0])-1 {
+			if count == nn-1 {
 				return true
 			}
 		}

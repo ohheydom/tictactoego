@@ -9,9 +9,9 @@ type GameBoard struct {
 
 func CreateBoard(size int) []string {
 	dim := size * size
-	board := make([]string, 0, dim)
+	board := make([]string, dim)
 	for i := 0; i < dim; i++ {
-		board = append(board, "-")
+		board[i] = "-"
 	}
 	return board
 }
@@ -31,14 +31,14 @@ func (g GameBoard) PreviousTurn() string {
 	return "X"
 }
 
-func (g GameBoard) RemainingIndices() []int {
-	remaining_indices := make([]int, 0, len(g.Board))
+func (g GameBoard) RemainingIndices() (remaining_indices []int) {
+	remaining_indices = make([]int, 0, len(g.Board))
 	for i, value := range g.Board {
 		if value == "-" {
 			remaining_indices = append(remaining_indices, i)
 		}
 	}
-	return remaining_indices
+	return
 }
 
 func (g *GameBoard) SwitchTurn() {
