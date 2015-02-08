@@ -25,54 +25,54 @@ func MinBy(arr [][]int, index int) []int {
 func SliceRows(board []string) [][]string {
 	n := len(board)
 	dimension := int(math.Sqrt(float64(n)))
-	sliced_board := make([][]string, 0, dimension)
+	slicedBoard := make([][]string, 0, dimension)
 	for i := 0; i < n; {
-		sliced_board = append(sliced_board, board[i:i+dimension])
+		slicedBoard = append(slicedBoard, board[i:i+dimension])
 		i += dimension
 	}
-	return sliced_board
+	return slicedBoard
 }
 
-func ReverseSlice(sliced_board [][]string) [][]string {
-	temp_slice := make([][]string, len(sliced_board))
-	for i, idx := len(sliced_board)-1, 0; i >= 0; i-- {
-		temp_slice[idx] = sliced_board[i]
+func ReverseSlice(slicedBoard [][]string) [][]string {
+	tempSlice := make([][]string, len(slicedBoard))
+	for i, idx := len(slicedBoard)-1, 0; i >= 0; i-- {
+		tempSlice[idx] = slicedBoard[i]
 		idx += 1
 	}
-	return temp_slice
+	return tempSlice
 }
 
-func Transpose(sliced_board [][]string) [][]string {
-	len_a := len(sliced_board)
-	len_b := len(sliced_board[0])
-	if len_a == len_b {
-		return TransposeSquare(sliced_board)
+func Transpose(slicedBoard [][]string) [][]string {
+	lenA := len(slicedBoard)
+	lenB := len(slicedBoard[0])
+	if lenA == lenB {
+		return TransposeSquare(slicedBoard)
 	}
-	temp_slice := make([][]string, len_b)
-	for i := 0; i < len_b; i++ {
-		for ib := 0; ib < len_a; ib++ {
-			temp_slice[i] = append(temp_slice[i], sliced_board[ib][i])
+	tempSlice := make([][]string, lenB)
+	for i := 0; i < lenB; i++ {
+		for ib := 0; ib < lenA; ib++ {
+			tempSlice[i] = append(tempSlice[i], slicedBoard[ib][i])
 		}
 	}
-	return temp_slice
+	return tempSlice
 }
 
-func TransposeSquare(sliced_board [][]string) [][]string {
-	n := len(sliced_board)
+func TransposeSquare(slicedBoard [][]string) [][]string {
+	n := len(slicedBoard)
 	for i := 0; i < n-1; i++ {
 		for j := i + 1; j < n; j++ {
-			sliced_board[i][j], sliced_board[j][i] = sliced_board[j][i], sliced_board[i][j]
+			slicedBoard[i][j], slicedBoard[j][i] = slicedBoard[j][i], slicedBoard[i][j]
 		}
 	}
-	return sliced_board
+	return slicedBoard
 }
 
-func TransposeDiagonal(sliced_board [][]string) [][]string {
-	n := len(sliced_board)
+func TransposeDiagonal(slicedBoard [][]string) [][]string {
+	n := len(slicedBoard)
 	t, t2 := make([]string, n), make([]string, n)
 	for i := 0; i < n; i++ {
-		t[i] = sliced_board[i][i]
-		t2[i] = sliced_board[i][n-i-1]
+		t[i] = slicedBoard[i][i]
+		t2[i] = slicedBoard[i][n-i-1]
 	}
 	return [][]string{t, t2}
 }

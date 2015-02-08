@@ -1,19 +1,19 @@
 package tictactoe
 
 func DiagonalWin(board []string, turn string) bool {
-	sliced_board := TransposeDiagonal(SliceRows(board))
-	return All(sliced_board, turn)
+	slicedBoard := TransposeDiagonal(SliceRows(board))
+	return All(slicedBoard, turn)
 }
 
 func HorizontalWin(board []string, turn string) bool {
-	sliced_board := SliceRows(board)
-	return All(sliced_board, turn)
+	slicedBoard := SliceRows(board)
+	return All(slicedBoard, turn)
 }
 
 func VerticalWin(board []string, turn string) bool {
-	sliced_board := Transpose(SliceRows(board))
-	x := All(sliced_board, turn)
-	Transpose(sliced_board)
+	slicedBoard := Transpose(SliceRows(board))
+	x := All(slicedBoard, turn)
+	Transpose(slicedBoard)
 	return x
 }
 

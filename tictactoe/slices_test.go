@@ -7,62 +7,62 @@ import (
 
 func TestAll(t *testing.T) {
 	board := [][]string{[]string{"X", "X", "X"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
-	expected_value := true
-	received_value := All(board, "X")
-	if expected_value != received_value {
-		t.Error("Expected: ", expected_value, "Received: ", received_value)
+	expectedValue := true
+	receivedValue := All(board, "X")
+	if expectedValue != receivedValue {
+		t.Error("Expected: ", expectedValue, "Received: ", receivedValue)
 	}
 }
 
 func TestReverseSlice(t *testing.T) {
-	initial_board := [][]string{[]string{"X", "X", "-"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
-	expected_board := [][]string{[]string{"-", "X", "O"}, []string{"-", "O", "O"}, []string{"X", "X", "-"}}
-	received_board := ReverseSlice(initial_board)
-	if !reflect.DeepEqual(expected_board, received_board) {
-		t.Error("Expected", expected_board, "got", received_board)
+	initialBoard := [][]string{[]string{"X", "X", "-"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
+	expectedBoard := [][]string{[]string{"-", "X", "O"}, []string{"-", "O", "O"}, []string{"X", "X", "-"}}
+	receivedBoard := ReverseSlice(initialBoard)
+	if !reflect.DeepEqual(expectedBoard, receivedBoard) {
+		t.Error("Expected", expectedBoard, "got", receivedBoard)
 	}
 }
 
 func TestTranspose(t *testing.T) {
-	initial_board := [][]string{[]string{"X", "X", "-"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
-	expected_transposed_board := [][]string{[]string{"X", "-", "-"}, []string{"X", "O", "X"}, []string{"-", "O", "O"}}
-	calculated_transposed_board := Transpose(initial_board)
-	if !reflect.DeepEqual(expected_transposed_board, calculated_transposed_board) {
-		t.Error("Expected", expected_transposed_board, "got", calculated_transposed_board)
+	initialBoard := [][]string{[]string{"X", "X", "-"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
+	expectedTransposedBoard := [][]string{[]string{"X", "-", "-"}, []string{"X", "O", "X"}, []string{"-", "O", "O"}}
+	calculatedTransposedBoard := Transpose(initialBoard)
+	if !reflect.DeepEqual(expectedTransposedBoard, calculatedTransposedBoard) {
+		t.Error("Expected", expectedTransposedBoard, "got", calculatedTransposedBoard)
 	}
 
-	initial_uneven_board := [][]string{[]string{"X", "X", "-"}, []string{"-", "O", "O"}}
-	expected_uneven_tran := [][]string{[]string{"X", "-"}, []string{"X", "O"}, []string{"-", "O"}}
-	calculated_uneven_tran := Transpose(initial_uneven_board)
-	if !reflect.DeepEqual(expected_uneven_tran, calculated_uneven_tran) {
-		t.Error("Expected", expected_uneven_tran, "got", calculated_uneven_tran)
+	initialUnevenBoard := [][]string{[]string{"X", "X", "-"}, []string{"-", "O", "O"}}
+	expectedUnevenTran := [][]string{[]string{"X", "-"}, []string{"X", "O"}, []string{"-", "O"}}
+	calculatedUnevenTran := Transpose(initialUnevenBoard)
+	if !reflect.DeepEqual(expectedUnevenTran, calculatedUnevenTran) {
+		t.Error("Expected", expectedUnevenTran, "got", calculatedUnevenTran)
 	}
 }
 
 func TestTransposeSquare(t *testing.T) {
-	initial_board := [][]string{[]string{"X", "X", "-"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
-	expected_transposed_board := [][]string{[]string{"X", "-", "-"}, []string{"X", "O", "X"}, []string{"-", "O", "O"}}
-	calculated_transposed_board := TransposeSquare(initial_board)
-	if !reflect.DeepEqual(expected_transposed_board, calculated_transposed_board) {
-		t.Error("Expected", expected_transposed_board, "got", calculated_transposed_board)
+	initialBoard := [][]string{[]string{"X", "X", "-"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
+	expectedTransposedBoard := [][]string{[]string{"X", "-", "-"}, []string{"X", "O", "X"}, []string{"-", "O", "O"}}
+	calculatedTransposedBoard := TransposeSquare(initialBoard)
+	if !reflect.DeepEqual(expectedTransposedBoard, calculatedTransposedBoard) {
+		t.Error("Expected", expectedTransposedBoard, "got", calculatedTransposedBoard)
 	}
 }
 
 func TestTransposeDiagonal(t *testing.T) {
-	initial_board := [][]string{[]string{"X", "X", "-"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
-	transposed_board := [][]string{[]string{"X", "O", "O"}, []string{"-", "O", "-"}}
-	tran := TransposeDiagonal(initial_board)
-	if !reflect.DeepEqual(tran, transposed_board) {
-		t.Error("Expected", transposed_board, "got", tran)
+	initialBoard := [][]string{[]string{"X", "X", "-"}, []string{"-", "O", "O"}, []string{"-", "X", "O"}}
+	transposedBoard := [][]string{[]string{"X", "O", "O"}, []string{"-", "O", "-"}}
+	tran := TransposeDiagonal(initialBoard)
+	if !reflect.DeepEqual(tran, transposedBoard) {
+		t.Error("Expected", transposedBoard, "got", tran)
 	}
 }
 
 func TestMatchSlice(t *testing.T) {
-	win_x := []string{"X", "X", "X", "O", "-", "O", "-", "-", "-"}
+	winX := []string{"X", "X", "X", "O", "-", "O", "-", "-", "-"}
 	indexes := [][]int{[]int{0, 1, 2}, []int{3, 4, 5}, []int{6, 7, 8}}
-	expected_value := true
-	received_value := MatchSlice(win_x, indexes, "X")
-	if expected_value != received_value {
+	expectedValue := true
+	receivedValue := MatchSlice(winX, indexes, "X")
+	if expectedValue != receivedValue {
 		t.Error("Expected True")
 	}
 }
@@ -89,10 +89,10 @@ func BenchmarkSliceRows(b *testing.B) {
 }
 
 func BenchmarkMatchSlice(b *testing.B) {
-	win_x := []string{"X", "X", "X", "O", "-", "O", "-", "-", "-"}
+	winX := []string{"X", "X", "X", "O", "-", "O", "-", "-", "-"}
 	indexes := [][]int{[]int{0, 1, 2}, []int{3, 4, 5}, []int{6, 7, 8}}
 	for i := 0; i < b.N; i++ {
-		MatchSlice(win_x, indexes, "X")
+		MatchSlice(winX, indexes, "X")
 	}
 }
 

@@ -2,9 +2,9 @@ package tictactoe
 
 import "strings"
 
-func AlphaBeta(g GameBoard, depth int, alpha int, beta int, max_player bool) int {
-	board_string := strings.Join(g.Board, "")
-	val, ok := g.Result[board_string]
+func AlphaBeta(g GameBoard, depth int, alpha int, beta int, maxPlayer bool) int {
+	boardString := strings.Join(g.Board, "")
+	val, ok := g.Result[boardString]
 	if ok {
 		return val
 	}
@@ -18,13 +18,13 @@ func AlphaBeta(g GameBoard, depth int, alpha int, beta int, max_player bool) int
 		return 0
 	}
 
-	if max_player {
+	if maxPlayer {
 		for _, move := range g.RemainingIndices() {
 			g.Move(move, "X")
 			alpha = Max(alpha, AlphaBeta(g, depth+1, alpha, beta, false))
 			g.UndoMove(move)
 			if beta <= alpha {
-				g.Result[board_string] = alpha
+				g.Result[boardString] = alpha
 				return alpha
 			}
 		}

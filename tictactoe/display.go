@@ -18,19 +18,19 @@ func Play() {
 	InputPlayAgain()
 }
 
-func horizontal_bars(dimension int) {
+func horizontalBars(dimension int) {
 	fmt.Println("--" + strings.Repeat("-", (dimension*2)) + "-")
 }
 
 func DisplayBoard(board []string) {
 	dimension := int(math.Sqrt(float64(len(board))))
-	horizontal_bars(dimension)
+	horizontalBars(dimension)
 	for i := 0; i < len(board); {
-		row_end := i + dimension
-		fmt.Println("|", strings.Join(board[i:row_end], " "), "|")
+		rowEnd := i + dimension
+		fmt.Println("|", strings.Join(board[i:rowEnd], " "), "|")
 		i += dimension
 	}
-	horizontal_bars(dimension)
+	horizontalBars(dimension)
 }
 
 func DisplayRemainingMoves(g *GameBoard) {

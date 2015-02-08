@@ -31,11 +31,11 @@ func (g GameBoard) PreviousTurn() string {
 	return "X"
 }
 
-func (g GameBoard) RemainingIndices() (remaining_indices []int) {
-	remaining_indices = make([]int, 0, len(g.Board))
+func (g GameBoard) RemainingIndices() (remainingIndices []int) {
+	remainingIndices = make([]int, 0, len(g.Board))
 	for i, value := range g.Board {
 		if value == "-" {
-			remaining_indices = append(remaining_indices, i)
+			remainingIndices = append(remainingIndices, i)
 		}
 	}
 	return
@@ -55,20 +55,20 @@ func (g *GameBoard) UndoMove(ind int) {
 	g.SwitchTurn()
 }
 
-func ValidMove(remaining_indices []int, move int) bool {
-	n := len(remaining_indices) / 2
-	if remaining_indices[n] == move {
+func ValidMove(remainingIndices []int, move int) bool {
+	n := len(remainingIndices) / 2
+	if remainingIndices[n] == move {
 		return true
 	}
-	if remaining_indices[n] > move {
-		for _, valid_move := range remaining_indices[:n] {
-			if valid_move == move {
+	if remainingIndices[n] > move {
+		for _, validMove := range remainingIndices[:n] {
+			if validMove == move {
 				return true
 			}
 		}
 	} else {
-		for _, valid_move := range remaining_indices[n:] {
-			if valid_move == move {
+		for _, validMove := range remainingIndices[n:] {
+			if validMove == move {
 				return true
 			}
 		}

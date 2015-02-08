@@ -3,21 +3,21 @@ package tictactoe
 import "testing"
 
 func TestHorizontalWin(t *testing.T) {
-	win_x := []string{"X", "X", "X", "O", "-", "O", "-", "-", "-"}
-	win_x_middle := []string{"-", "-", "O", "X", "X", "X", "O", "-", "-"}
-	win_x_end := []string{"-", "-", "-", "O", "-", "O", "X", "X", "X"}
-	win_o := []string{"O", "O", "O", "X", "X", "-", "-", "-", "-"}
-	win_o_middle := []string{"-", "-", "X", "O", "O", "O", "X", "-", "-"}
-	win_o_end := []string{"-", "-", "X", "X", "-", "-", "O", "O", "O"}
-	winners_x := [][]string{win_x, win_x_middle, win_x_end}
-	winners_o := [][]string{win_o, win_o_middle, win_o_end}
-	for _, result := range winners_x {
+	winX := []string{"X", "X", "X", "O", "-", "O", "-", "-", "-"}
+	winXMiddle := []string{"-", "-", "O", "X", "X", "X", "O", "-", "-"}
+	winXEnd := []string{"-", "-", "-", "O", "-", "O", "X", "X", "X"}
+	winO := []string{"O", "O", "O", "X", "X", "-", "-", "-", "-"}
+	winOMiddle := []string{"-", "-", "X", "O", "O", "O", "X", "-", "-"}
+	winOEnd := []string{"-", "-", "X", "X", "-", "-", "O", "O", "O"}
+	winnersX := [][]string{winX, winXMiddle, winXEnd}
+	winnersO := [][]string{winO, winOMiddle, winOEnd}
+	for _, result := range winnersX {
 		if HorizontalWin(result, "X") == false {
 			t.Error("Expected true")
 		}
 	}
 
-	for _, result := range winners_o {
+	for _, result := range winnersO {
 		if HorizontalWin(result, "O") == false {
 			t.Error("Expected true")
 		}
@@ -25,19 +25,19 @@ func TestHorizontalWin(t *testing.T) {
 }
 
 func TestVerticalWin(t *testing.T) {
-	win_x := []string{"X", "O", "-", "X", "O", "O", "X", "-", "-"}
-	win_x_middle := []string{"-", "X", "-", "O", "X", "O", "-", "X", "-"}
-	win_o_middle := []string{"-", "O", "X", "-", "O", "-", "X", "O", "-"}
-	win_o_end := []string{"-", "-", "O", "X", "X", "O", "X", "-", "O"}
-	winners_x := [][]string{win_x, win_x_middle}
-	winners_o := [][]string{win_o_middle, win_o_end}
-	for _, result := range winners_x {
+	winX := []string{"X", "O", "-", "X", "O", "O", "X", "-", "-"}
+	winXMiddle := []string{"-", "X", "-", "O", "X", "O", "-", "X", "-"}
+	winOMiddle := []string{"-", "O", "X", "-", "O", "-", "X", "O", "-"}
+	winOEnd := []string{"-", "-", "O", "X", "X", "O", "X", "-", "O"}
+	winnersX := [][]string{winX, winXMiddle}
+	winnersO := [][]string{winOMiddle, winOEnd}
+	for _, result := range winnersX {
 		if VerticalWin(result, "X") == false {
 			t.Error("Expected true")
 		}
 	}
 
-	for _, result := range winners_o {
+	for _, result := range winnersO {
 		if VerticalWin(result, "O") == false {
 			t.Error("Expected true")
 		}
@@ -45,8 +45,8 @@ func TestVerticalWin(t *testing.T) {
 }
 
 func TestDiagonalWin(t *testing.T) {
-	win_x := []string{"X", "O", "O", "-", "X", "-", "O", "X", "X"}
-	if DiagonalWin(win_x, "X") == false {
+	winX := []string{"X", "O", "O", "-", "X", "-", "O", "X", "X"}
+	if DiagonalWin(winX, "X") == false {
 		t.Error("Expected True")
 	}
 }

@@ -2,9 +2,9 @@ package tictactoe
 
 import "strings"
 
-func MiniMax(g GameBoard, depth int, max_player bool) int {
-	board_string := strings.Join(g.Board, "")
-	val, ok := g.Result[board_string]
+func MiniMax(g GameBoard, depth int, maxPlayer bool) int {
+	boardString := strings.Join(g.Board, "")
+	val, ok := g.Result[boardString]
 	if ok {
 		return val
 	}
@@ -18,26 +18,26 @@ func MiniMax(g GameBoard, depth int, max_player bool) int {
 		return 0
 	}
 
-	if max_player {
-		best_value := -1000
+	if maxPlayer {
+		bestValue := -1000
 		for _, move := range g.RemainingIndices() {
 			g.Move(move, "X")
 			value := MiniMax(g, depth+1, false)
 			g.UndoMove(move)
-			best_value = Max(best_value, value)
+			bestValue = Max(bestValue, value)
 		}
-		g.Result[board_string] = best_value
-		return best_value
+		g.Result[boardString] = bestValue
+		return bestValue
 	} else {
-		best_value := 1000
+		bestValue := 1000
 		for _, move := range g.RemainingIndices() {
 			g.Move(move, "O")
 			value := MiniMax(g, depth+1, true)
 			g.UndoMove(move)
-			best_value = Min(best_value, value)
+			bestValue = Min(bestValue, value)
 		}
-		g.Result[board_string] = best_value
-		return best_value
+		g.Result[boardString] = bestValue
+		return bestValue
 	}
 }
 

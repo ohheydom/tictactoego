@@ -37,12 +37,12 @@ func InputMove(g *GameBoard) {
 }
 
 func InputPlayAgain() {
-	var yes_or_no string
+	var yesOrNo string
 	fmt.Printf("Would you like to play again?? ")
-	_, err := fmt.Scanf("%s", &yes_or_no)
+	_, err := fmt.Scanf("%s", &yesOrNo)
 	if err != nil {
 	} else {
-		if strings.ToUpper(yes_or_no) == "YES" || strings.ToUpper(yes_or_no) == "Y" {
+		if strings.ToUpper(yesOrNo) == "YES" || strings.ToUpper(yesOrNo) == "Y" {
 			Play()
 		}
 	}
