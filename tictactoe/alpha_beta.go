@@ -35,6 +35,7 @@ func AlphaBeta(g GameBoard, depth int, alpha int, beta int, maxPlayer bool) int 
 			beta = Min(beta, AlphaBeta(g, depth+1, alpha, beta, true))
 			g.UndoMove(move)
 			if beta <= alpha {
+				g.Result[boardString] = beta
 				return beta
 			}
 		}

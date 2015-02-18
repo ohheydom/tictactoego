@@ -22,15 +22,15 @@ func MinBy(arr [][]int, index int) []int {
 	return top
 }
 
-func SliceRows(board []string) [][]string {
+func SliceRows(board []string) (slicedBoard [][]string) {
 	n := len(board)
 	dimension := int(math.Sqrt(float64(n)))
-	slicedBoard := make([][]string, 0, dimension)
+	slicedBoard = make([][]string, 0, dimension)
 	for i := 0; i < n; {
 		slicedBoard = append(slicedBoard, board[i:i+dimension])
 		i += dimension
 	}
-	return slicedBoard
+	return
 }
 
 func ReverseSlice(slicedBoard [][]string) [][]string {
