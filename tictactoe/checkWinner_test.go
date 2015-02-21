@@ -12,13 +12,13 @@ func TestHorizontalWin(t *testing.T) {
 	winnersX := [][]string{winX, winXMiddle, winXEnd}
 	winnersO := [][]string{winO, winOMiddle, winOEnd}
 	for _, result := range winnersX {
-		if HorizontalWin(result, "X") == false {
+		if HorizontalWin(SliceRows(result), "X") == false {
 			t.Error("Expected true")
 		}
 	}
 
 	for _, result := range winnersO {
-		if HorizontalWin(result, "O") == false {
+		if HorizontalWin(SliceRows(result), "O") == false {
 			t.Error("Expected true")
 		}
 	}
@@ -32,13 +32,13 @@ func TestVerticalWin(t *testing.T) {
 	winnersX := [][]string{winX, winXMiddle}
 	winnersO := [][]string{winOMiddle, winOEnd}
 	for _, result := range winnersX {
-		if VerticalWin(result, "X") == false {
+		if VerticalWin(SliceRows(result), "X") == false {
 			t.Error("Expected true")
 		}
 	}
 
 	for _, result := range winnersO {
-		if VerticalWin(result, "O") == false {
+		if VerticalWin(SliceRows(result), "O") == false {
 			t.Error("Expected true")
 		}
 	}
@@ -46,7 +46,7 @@ func TestVerticalWin(t *testing.T) {
 
 func TestDiagonalWin(t *testing.T) {
 	winX := []string{"X", "O", "O", "-", "X", "-", "O", "X", "X"}
-	if DiagonalWin(winX, "X") == false {
+	if DiagonalWin(SliceRows(winX), "X") == false {
 		t.Error("Expected True")
 	}
 }

@@ -86,9 +86,9 @@ func All(board [][]string, value string) bool {
 			} else {
 				break
 			}
-			if count == len(row) {
-				return true
-			}
+		}
+		if count == len(row) {
+			return true
 		}
 	}
 	return false

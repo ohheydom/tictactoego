@@ -1,27 +1,38 @@
 package tictactoe
 
-func DiagonalWin(board []string, turn string) bool {
-	slicedBoard := TransposeDiagonal(SliceRows(board))
+func DiagonalWin(slicedBoard [][]string, turn string) bool {
+	diagBoard := TransposeDiagonal(slicedBoard)
+	return All(diagBoard, turn)
+}
+
+func HorizontalWin(slicedBoard [][]string, turn string) bool {
 	return All(slicedBoard, turn)
 }
 
-func HorizontalWin(board []string, turn string) bool {
-	slicedBoard := SliceRows(board)
-	return All(slicedBoard, turn)
-}
-
-func VerticalWin(board []string, turn string) bool {
-	slicedBoard := Transpose(SliceRows(board))
-	x := All(slicedBoard, turn)
-	Transpose(slicedBoard)
-	return x
+func VerticalWin(slicedBoard [][]string, turn string) bool {
+	n := len(slicedBoard)
+	for i := 0; i < n; i++ {
+		count := 0
+		for j := 0; j < n; j++ {
+			if turn == slicedBoard[j][i] {
+				count++
+			} else {
+				break
+			}
+		}
+		if count == n {
+			return true
+		}
+	}
+	return false
 }
 
 func (g GameBoard) Win() bool {
 	if g.Count < 5 {
 		return false
 	}
-	if VerticalWin(g.Board, g.PreviousTurn()) || HorizontalWin(g.Board, g.PreviousTurn()) || DiagonalWin(g.Board, g.PreviousTurn()) {
+	slicedBoard := SliceRows(g.Board)
+	if VerticalWin(slicedBoard, g.PreviousTurn()) || HorizontalWin(slicedBoard, g.PreviousTurn()) || DiagonalWin(slicedBoard, g.PreviousTurn()) {
 		return true
 	}
 	return false
