@@ -30,3 +30,12 @@ func BenchmarkBestMoveMiniMax(b *testing.B) {
 		g.MiniMaxBestMove()
 	}
 }
+
+func BenchmarkBestMoveMiniMax4(b *testing.B) {
+	board := []string{"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "X", "-", "-", "-", "-", "-"}
+	results := make(map[string]int)
+	g := GameBoard{Board: board, Turn: "O", Result: results}
+	for i := 0; i < b.N; i++ {
+		g.MiniMaxBestMove()
+	}
+}

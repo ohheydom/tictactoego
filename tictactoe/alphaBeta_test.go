@@ -30,3 +30,12 @@ func BenchmarkBestMoveAlphaBeta(b *testing.B) {
 		g.AlphaBetaBestMove()
 	}
 }
+
+func BenchmarkBestMoveAlphaBeta4(b *testing.B) {
+	board := []string{"-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "X", "-", "-", "-", "-", "-"}
+	results := make(map[string]int)
+	g := GameBoard{Board: board, Turn: "O", Result: results}
+	for i := 0; i < b.N; i++ {
+		g.AlphaBetaBestMove()
+	}
+}
