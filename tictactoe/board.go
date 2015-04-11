@@ -19,7 +19,7 @@ func CreateBoard(size int) []string {
 func (g *GameBoard) Move(ind int, turn string) {
 	if g.Board[ind] == "-" {
 		g.Board[ind] = turn
-		g.Count += 1
+		g.Count++
 		g.SwitchTurn()
 	}
 }
@@ -51,7 +51,7 @@ func (g *GameBoard) SwitchTurn() {
 
 func (g *GameBoard) UndoMove(ind int) {
 	g.Board[ind] = "-"
-	g.Count -= 1
+	g.Count--
 	g.SwitchTurn()
 }
 

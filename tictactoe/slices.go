@@ -37,7 +37,7 @@ func ReverseSlice(slicedBoard [][]string) [][]string {
 	tempSlice := make([][]string, len(slicedBoard))
 	for i, idx := len(slicedBoard)-1, 0; i >= 0; i-- {
 		tempSlice[idx] = slicedBoard[i]
-		idx += 1
+		idx++
 	}
 	return tempSlice
 }
