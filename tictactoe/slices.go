@@ -58,8 +58,7 @@ func Transpose(slicedBoard [][]string) [][]string {
 }
 
 func TransposeSquare(slicedBoard [][]string) [][]string {
-	n := len(slicedBoard)
-	for i := 0; i < n-1; i++ {
+	for i, n := 0, len(slicedBoard); i < n-1; i++ {
 		for j := i + 1; j < n; j++ {
 			slicedBoard[i][j], slicedBoard[j][i] = slicedBoard[j][i], slicedBoard[i][j]
 		}
@@ -102,8 +101,7 @@ func AddOneToSliceValues(slice []int) []int {
 }
 
 func MatchSlice(arr []string, slice [][]int, turn string) bool {
-	n := len(slice)
-	nn := len(slice[0])
+	n, nn := len(slice), len(slice[0])
 	for i := 0; i < n; i++ {
 		for ib, count := 1, 0; ib < nn; ib++ {
 			if arr[slice[i][ib]] != turn {

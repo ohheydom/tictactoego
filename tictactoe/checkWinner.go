@@ -10,8 +10,7 @@ func HorizontalWin(slicedBoard [][]string, turn string) bool {
 }
 
 func VerticalWin(slicedBoard [][]string, turn string) bool {
-	n := len(slicedBoard)
-	for i := 0; i < n; i++ {
+	for i, n := 0, len(slicedBoard); i < n; i++ {
 		count := 0
 		for j := 0; j < n; j++ {
 			if turn == slicedBoard[j][i] {

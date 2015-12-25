@@ -2,6 +2,7 @@ package tictactoe
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -9,6 +10,8 @@ func InputGridSize() (dim int) {
 	fmt.Printf("What size grid would you like to play on?? Please enter only one dimension (ie 3, 4, or 5): ")
 	_, err := fmt.Scanf("%d", &dim)
 	if err != nil {
+		fmt.Println("Please enter a valid number.")
+		os.Exit(1)
 	}
 	return
 }
@@ -39,8 +42,7 @@ func InputMove(g *GameBoard) {
 func InputPlayAgain() {
 	var yesOrNo string
 	fmt.Printf("Would you like to play again?? ")
-	_, err := fmt.Scanf("%s", &yesOrNo)
-	if err != nil {
+	if _, err := fmt.Scanf("%s", &yesOrNo); err != nil {
 	} else {
 		if strings.ToUpper(yesOrNo) == "YES" || strings.ToUpper(yesOrNo) == "Y" {
 			Play()
