@@ -1,8 +1,8 @@
 #Tic Tac Toe
 
-This was built in Go and utilizes a command line interface.
+This is a command line interface version of Tic Tac Toe written in Go.
 
-##Instructions
+## Instructions
 
 To start, type the following into the command prompt.
 
