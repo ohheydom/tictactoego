@@ -1,8 +1,20 @@
 package tictactoe
 
 func DiagonalWin(slicedBoard [][]string, turn string) bool {
-	diagBoard := TransposeDiagonal(slicedBoard)
-	return All(diagBoard, turn)
+	n := len(slicedBoard)
+	var count, count2 int
+	for i := 0; i < n; i++ {
+		if turn == slicedBoard[i][i] {
+			count++
+		}
+		if turn == slicedBoard[i][n-i-1] {
+			count2++
+		}
+	}
+	if count == n || count2 == n {
+		return true
+	}
+	return false
 }
 
 func HorizontalWin(slicedBoard [][]string, turn string) bool {
